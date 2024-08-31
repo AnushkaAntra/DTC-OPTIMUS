@@ -1,12 +1,6 @@
-import type { NextPage } from "next";
-import Navbar from "@/components/custom/navbar";
-// import "@/components/custom/styles/navbar.module.css";
-
-const LandingPage: NextPage = () => {
+import AdminPage from './admin/page';
+export default function Home() {
   return (
-    <>
-    <Navbar />
-    </>
+     <AdminPage />
   );
-};
-export default LandingPage;
+}

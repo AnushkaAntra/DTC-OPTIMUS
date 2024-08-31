@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Team-42
 
-## Getting Started
+<p align="center">
+  <img src="./assests/Logo.jpg" alt="DTC-OPTIMUS Logo" width="150" height="150">
+</p>
 
-First, run the development server:
+<h1 align="center">DTC-OPTIMUS</h1>
+
+<p align="center">
+  <strong>Automated Bus Scheduling and Route Management System</strong>
+</p>
+
+## Table of Contents
+
+- [Team-42](#team-42)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Problem Statement](#problem-statement)
+  - [Technology Stack](#technology-stack)
+  - [Screenshots](#screenshots)
+  - [Features](#features)
+  - [Installation](#installation)
+
+## Introduction
+
+**DTC-OPTIMUS** is a comprehensive software solution designed to automate various aspects of bus scheduling and route management for the Delhi Transport Corporation (DTC). The Automated Bus Scheduling and Route Management System will utilize algorithms, data analytics, and geographic information system (GIS) technologies to automate various aspects of bus scheduling and route management. The project aims to develop a comprehensive software solution to streamline bus scheduling, optimize resource utilization, and improve route planning.
+
+## Problem Statement
+
+![Static Badge](https://img.shields.io/badge/Team-BUSy%20Bugs-blue?link=https://www.sih.gov.in/sih2024PS)
+![Static Badge](https://img.shields.io/badge/Problem_Statement-SIH_1612-blue?link=https://www.sih.gov.in/sih2024PS)
+![Static Badge](https://img.shields.io/badge/Organisation-Government%20of%20NCT%20of%20Delhi%20-blue?link=https://www.sih.gov.in/sih2024PS)
+![Static Badge](https://img.shields.io/badge/Category-Software-blue?link=https://www.sih.gov.in/sih2024PS)
+![Static Badge](https://img.shields.io/badge/Theme-Smart%20Vehicles-blue?link=https://www.sih.gov.in/sih2024PS)
+
+Efficient bus scheduling and route planning are essential for the smooth operation of public bus transport services. Currently, the Delhi Transport Corporation (DTC) relies on manual methods for scheduling and planning, which are time-consuming and resource-intensive. To improve operational efficiency, reduce errors, and enhance service reliability, DTC needs an automated software solution capable of handling both linked and unlinked duty scheduling, facilitate route management by mapping all existing routes and highlighting overlaps with proposed new routes.
+
+## Technology Stack
+
+![NextJs](https://img.shields.io/badge/-Next-333333?style=flat&logo=Next.js)
+![JavaScript](https://img.shields.io/badge/-JavaScript-333333?style=flat&logo=javascript)
+![Python](https://img.shields.io/badge/-Python-333333?style=flat&logo=Python&logoColor=007396)
+![MongoDB](https://img.shields.io/badge/-mongodb-333333?style=flat&logo=mongodb)
+
+## Screenshots
+
+## Features
+
+- [x] **Linked Duty Scheduling:** Assign crews to specific buses for their entire shifts.
+- [x] **Unlinked Duty Scheduling:** Allow crews to switch bus between trips and manage rest periods.
+- [x] **Route Management:** Map existing routes, and optimize for congestion and coverage.
+- [x] **Optimized routes:** GIS mapping and route planning.
+
+## Installation
+
+To set up the project locally:
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/ITER-SIH/HW5-Team42.git
+cd HW5-Team42
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
