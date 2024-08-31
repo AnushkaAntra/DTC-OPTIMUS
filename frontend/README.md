@@ -9,7 +9,6 @@
 <p align="center">
   <strong>Automated Bus Scheduling and Route Management System</strong>
 </p>
----
 
 ## Table of Contents
 
