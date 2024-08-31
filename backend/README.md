@@ -28,9 +28,9 @@
 
 ## Problem Statement
 
-![Static Badge](https://img.shields.io/badge/Team-BUS-y%20Bugs-blue?link=https://www.sih.gov.in/sih2024PS)
+![Static Badge](https://img.shields.io/badge/Team-BUSy%20Bugs-blue?link=https://www.sih.gov.in/sih2024PS)
 ![Static Badge](https://img.shields.io/badge/Problem_Statement-SIH_1612-blue?link=https://www.sih.gov.in/sih2024PS)
-![Static Badge](https://img.shields.io/badge/Organisation-Government%20of%20NCT%20of%20Delhi%20blue?link=https://www.sih.gov.in/sih2024PS)
+![Static Badge](https://img.shields.io/badge/Organisation-Government%20of%20NCT%20of%20Delhi%20-blue?link=https://www.sih.gov.in/sih2024PS)
 ![Static Badge](https://img.shields.io/badge/Category-Software-blue?link=https://www.sih.gov.in/sih2024PS)
 ![Static Badge](https://img.shields.io/badge/Theme-Smart%20Vehicles-blue?link=https://www.sih.gov.in/sih2024PS)
 
