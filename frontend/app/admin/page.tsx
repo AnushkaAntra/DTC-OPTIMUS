@@ -4,9 +4,8 @@ import Home from '@/components/custom/Home';
 export default function AdminPage() {
   return (
     <div>
-      <Navbar />
       <Home/>
-      <h1>Welcome to the Admin Dashboard</h1>
+      <h1>This is a test message</h1>
     </div>
   );
 }

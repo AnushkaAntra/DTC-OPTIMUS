@@ -1,10 +1,11 @@
 
 import Link from "next/link"
 import { JSX, SVGProps } from "react"
+import "@/components/styles/output.css"
 
 function Navbar() {
   return (
-    <nav className="sticky inset-x-0 top-0 z-50 bg-primary shadow-sm">
+    <nav className="sticky inset-x-0 top-0 z-50 bg-[#1a1a1a] shadow-sm">
       <div className="w-full max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-14 items-center">
           <Link href="#" className="flex items-center" prefetch={false}>
@@ -17,21 +18,21 @@ function Navbar() {
               className="font-medium flex items-center text-sm transition-colors hover:underline"
               prefetch={false}
             >
-              Home
+              Admin
             </Link>
             <Link
               href="#"
               className="font-medium flex items-center text-sm transition-colors hover:underline"
               prefetch={false}
             >
-              About
+              Planner
             </Link>
             <Link
               href="#"
               className="font-medium flex items-center text-sm transition-colors hover:underline"
               prefetch={false}
             >
-              Services
+              Crew
             </Link>
             <Link
               href="#"
