@@ -1,4 +1,3 @@
-// app/crew-details/[crew]/page.jsx
 import { notFound } from 'next/navigation';
 
 export default async function CrewDetails({ params }) {
@@ -6,7 +5,7 @@ export default async function CrewDetails({ params }) {
 
   // Fetch data using the dynamic route parameter
   const res = await fetch(`https://jsonplaceholder.typicode.com/users/${crew}`, {
-    next: { revalidate: 60 }, // Cache the data for 60 seconds
+    next: { revalidate: 60 },
   });
 
   if (!res.ok) {
