@@ -1,7 +1,6 @@
 
 import Link from "next/link"
 import { JSX, SVGProps } from "react"
-// import { Button } from "@/components/ui/button"
 
 export default function Component() {
   return (
