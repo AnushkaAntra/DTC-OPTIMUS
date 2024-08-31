@@ -21,6 +21,10 @@
       "@/*": ["./*"]
     }
   },
+<<<<<<< Updated upstream
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+=======
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/custom/Navbar.tsx", "components/custom/Footer.tsx", "app/crew-details/page.jsx", "app/crew-details/[crews].jsx"],
+>>>>>>> Stashed changes
   "exclude": ["node_modules"]
 }
