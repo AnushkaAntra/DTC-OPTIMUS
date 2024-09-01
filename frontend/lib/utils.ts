@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 export const handleError = (error: unknown) => {
   if (error instanceof Error) {
     // This is a native JavaScript error (e.g., TypeError, RangeError)
@@ -12,10 +11,6 @@ export const handleError = (error: unknown) => {
 };
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-=======
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
->>>>>>> Stashed changes
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))

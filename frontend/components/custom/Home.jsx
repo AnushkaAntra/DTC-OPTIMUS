@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <section>
       <div className='bg-primary'>
-        <div className='flex flex-row bg-secondary p-4 gap-4'>
+        <div className='flex flex-row bg-secondary p-4 gap-4 text-black'>
           <div className='w-2/3'>
             <h1 className='text-4xl font-bold p-4'>DTC-OPTIMUS</h1>
             <h3 className='text-3xl font-bold px-4'>An Automated Bus Scheduling and Route Management System</h3>
@@ -29,7 +29,7 @@ const Home = () => {
           </div>
         </div>
         
-        <div className='my-8 flex flex-wrap justify-center gap-6'>
+        <div className='my-8 flex flex-wrap justify-center gap-6 text-black'>
           <div className="bg-[#F29680] p-6 rounded-lg shadow-lg max-w-sm mx-auto h-max">
             <Link
               href="#"
