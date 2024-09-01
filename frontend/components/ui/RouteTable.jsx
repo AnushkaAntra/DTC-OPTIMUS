@@ -27,9 +27,11 @@ export default function App() {
 
   const hasMore = true; // Set this to true if you have more data to load
 
+  const [isSaving, setIsSaving] = React.useState(false);
+
   const saveKey = (id) => {
+    setIsSaving(true);
     localStorage.setItem('tempRouteIdStorage', id);
-    setIsLoading(true);
     setTimeout(() => {
       window.location.reload();
     }, 1000);
@@ -72,7 +74,9 @@ export default function App() {
             <TableCell>{item.from}</TableCell>
             <TableCell>{item.to}</TableCell>
             <TableCell>
-              <Button onClick={() => saveKey(item.id)}>View</Button>
+              <Button onClick={() => saveKey(item.id)} isDisabled={isSaving}>
+                {isSaving ? <Spinner color="white" size="sm" /> : "View"}
+              </Button>
             </TableCell>
           </TableRow>
         )}
