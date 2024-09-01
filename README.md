@@ -59,5 +59,16 @@ To set up the project locally:
 
 ```bash
 git clone https://github.com/ITER-SIH/HW5-Team42.git
-cd HW5-Team42
+cd HW5-Team42/frontend
+npm i
 ```
+
+2. To get the crew schedules
+
+```bash
+cd ../backend
+env\Scripts\activate
+pythonservice.py
+```
+
+Now you can check on localhost:3000/
