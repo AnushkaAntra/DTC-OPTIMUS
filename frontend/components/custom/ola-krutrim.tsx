@@ -15,7 +15,7 @@ interface KrutrimMapProps {
   displayedRoutes?: string[];
 }
 
-function KrutrimMap(props: KrutrimMapProps) {
+export function KrutrimMap(props: KrutrimMapProps) {
   const olaMaps = useMemo(
     () =>
       new OlaMaps({
@@ -32,7 +32,7 @@ function KrutrimMap(props: KrutrimMapProps) {
     const mapContainer = mapRef.current;
     const initializedMap = olaMaps.init({
       style:
-        "https://api.olamaps.io/tiles/vector/v1/styles/default-light-lite/style.json",
+        "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
       container: mapContainer,
       center: [77.2190938, 28.6331322],
       zoom: 9.7,
@@ -83,7 +83,10 @@ function KrutrimMap(props: KrutrimMapProps) {
     if (!map) return;
 
     if (props.showroutes) {
-      showRoutes(map, []);
+      const routeId = localStorage.getItem("tempRouteIdStorage");
+      if (routeId !== null) {
+        showRoutes(olaMaps, map, Number(routeId));
+      }
     }
   }, [map, props.showroutes, olaMaps]);
 
@@ -124,9 +127,9 @@ function KrutrimMap(props: KrutrimMapProps) {
 // Routes done, need to pass in some routeIds to display the data, gotta implement this
 
 
-async function showRoutes(map: any, routeIds: number[]) {
+async function showRoutes(olaMaps: any, map: any, routeIds: number) {
   // For every bus route, fetch the stops and extract coordinates out of it,
-  const stopIds = busRoutes[1].stops;
+  const stopIds = busRoutes[routeIds].stops;
   // For each stopId, we need the Longitude and latitude
   const coordinates = stopIds
     .map((stopId) => {
@@ -143,9 +146,13 @@ async function showRoutes(map: any, routeIds: number[]) {
   // But... we can't just fly over buildings right? We need coordinates of the nearest road. Hence, we will be
   // snapping the coordinates to the nearest road in order to define a clear route.
 
+  showRouteStops(olaMaps, map, coordinates);
+
   const data = await getSnappedCoordinates(
     coordinates.map((coord) => coord.slice(1))
   );
+
+
 
   const snappedCoordinates = data.snapped_points.map(
     (point: { location: { lat: any; lng: any } }) => [
@@ -154,7 +161,9 @@ async function showRoutes(map: any, routeIds: number[]) {
     ]
   );
 
-  console.log("Snapped coordinates", snappedCoordinates);
+
+  
+  // console.log("Snapped coordinates", snappedCoordinates);
 
   // If it highlights as an error, ignore it, it works. Error highlighting is due to using hooks to render the map
   // So, it cannot readily fetch the properties of map unless it is loaded on the browser.
@@ -184,7 +193,7 @@ async function showRoutes(map: any, routeIds: number[]) {
     });
   });
 
-  console.log(busRoutes[0].stops);
+  // console.log(busRoutes[0].stops);
 }
 
 async function getSnappedCoordinates(coordinates: any[][]) {
@@ -201,6 +210,21 @@ async function getSnappedCoordinates(coordinates: any[][]) {
   const data = await response.json();
   console.log(data);
   return data;
+}
+
+async function showRouteStops(olaMaps: any, map: any, markerCoordinates: any[][]) {
+
+  const tempCoordinates = markerCoordinates.map((coord) => coord.slice(1))
+  
+  tempCoordinates.forEach((coordinates, index) => {
+    const popup = olaMaps.addPopup({ offset: [0, -30], anchor: 'bottom' }).setHTML(`<div>${markerCoordinates[index][0]}</div>`)
+        olaMaps.addMarker({ offset: [0, 6], anchor: 'bottom' })
+        .setLngLat(coordinates)
+        .setPopup(popup)
+        .addTo(map);
+      });
+
+
 }
 
 export default KrutrimMap;
