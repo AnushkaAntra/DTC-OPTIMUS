@@ -2,6 +2,7 @@
 import { faBus, faPeopleGroup, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from 'next/image';
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -30,31 +31,46 @@ const Home = () => {
         
         <div className='my-8 flex flex-wrap justify-center gap-6 text-black'>
           <div className="bg-[#F29680] p-6 rounded-lg shadow-lg max-w-sm mx-auto h-max">
-            <div className="flex flex-col justify-center items-center">
-              <FontAwesomeIcon
-                icon={faBus}
-                className='text-8xl mb-4'
-              />
-              <p className="mt-4 font-bold text-2xl">BUS</p>
-            </div>
+            <Link
+              href="#"
+              prefetch={false}
+            >
+              <div className="flex flex-col justify-center items-center">
+                <FontAwesomeIcon
+                  icon={faBus}
+                  className='text-8xl mb-4'
+                />
+                <p className="mt-4 font-bold text-2xl">BUS</p>
+              </div>
+            </Link>
           </div>
           <div className="bg-[#F29680] p-6 rounded-lg shadow-lg max-w-sm mx-auto h-max">
-            <div className="flex flex-col justify-center items-center">
-              <FontAwesomeIcon
-                icon={faPeopleGroup}
-                className='text-8xl mb-4'
-              />
-              <p className="mt-4 font-bold text-2xl">CREW</p>
-            </div>
+            <Link
+              href="/planner"
+              prefetch={false}
+            >
+              <div className="flex flex-col justify-center items-center">
+                <FontAwesomeIcon
+                  icon={faPeopleGroup}
+                  className='text-8xl mb-4'
+                />
+                <p className="mt-4 font-bold text-2xl">Planner</p>
+              </div>
+            </Link>
           </div>
           <div className="bg-[#F29680] p-6 rounded-lg shadow-lg max-w-sm mx-auto h-max">
-            <div className="flex flex-col justify-center items-center">
-              <FontAwesomeIcon
-                icon={faUser}
-                className='text-8xl mb-4'
-              />
-              <p className="mt-4 font-bold text-2xl">Manager</p>
-            </div>
+            <Link
+              href="/manager"
+              prefetch={false}
+            >
+              <div className="flex flex-col justify-center items-center">
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className='text-8xl mb-4'
+                />
+                <p className="mt-4 font-bold text-2xl">Manager</p>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
