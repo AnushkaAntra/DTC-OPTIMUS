@@ -1,7 +1,8 @@
-import KrutrimMap from '@/components/custom/ola-krutrim'
-import ButtonModal from '@/components/ui/ButtonModal'
-import RouteTable from '@/components/ui/RouteTable'
-import React from 'react'
+"use client";
+
+import KrutrimMap from '@/components/custom/ola-krutrim';
+import ButtonModal from '@/components/ui/ButtonModal';
+import RouteTable from '@/components/ui/RouteTable';
 
 type Props = {}
 
