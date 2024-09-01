@@ -8,7 +8,7 @@ function Navbar() {
     <nav className="sticky inset-x-0 top-0 z-50 bg-[#1a1a1a] shadow-smt text-white">
       <div className="w-full max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-14 items-center">
-          <Image src="/dtc-optimus-logo.jpg" width={50} height={50} alt="Bus image" />
+          <Image src="/dtc-optimus-logo.jpg" width={80} height={80} alt="Bus image" />
           <nav className="hidden md:flex gap-4">
             <Link
               href="/manager"
