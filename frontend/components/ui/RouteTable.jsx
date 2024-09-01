@@ -1,34 +1,39 @@
+"use client"
+
 import React from "react";
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue, Spinner, Button} from "@nextui-org/react";
-import {useAsyncList} from "@react-stately/data";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Spinner, Button } from "@nextui-org/react";
+import stopNameMap from "@/sdk/map-resources/stop-name-map";
+import busRoutes from "@/sdk/map-resources/bus-routes";
+
+
+const staticRoutes = []
+for(var i = 0; i < busRoutes.length; i++) {
+  // console([stopNameMap[busRoutes[i].first_stop_id].stop_name, stopNameMap[busRoutes[i].last_stop_id].stop_name])
+  const from = stopNameMap[busRoutes[i].first_stop_id].stop_name;
+  const to = stopNameMap[busRoutes[i].last_stop_id].stop_name;
+  if (to && from) {
+    staticRoutes.push({"id": i, "from": from, "to": to});
+  }
+}
+
+// console.log(staticRoutes);
 
 export default function App() {
-  const [page, setPage] = React.useState(1);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-  let list = useAsyncList({
-    async load({signal, cursor}) {
-      if (cursor) {
-        setPage((prev) => prev + 1);
-      }
+  const loadMore = () => {
+    // Implement your logic for loading more data here
+  };
 
-      // If no cursor is available, then we're loading the first page.
-      // Otherwise, the cursor is the next URL to load, as returned from the previous page.
-      const res = await fetch(cursor || "https://swapi.py4e.com/api/people/?search=", {signal});
-      let json = await res.json();
+  const hasMore = true; // Set this to true if you have more data to load
 
-      if (!cursor) {
-        setIsLoading(false);
-      }
-
-      return {
-        items: json.results,
-        cursor: json.next,
-      };
-    },
-  });
-
-  const hasMore = page < 9;
+  const saveKey = (id) => {
+    localStorage.setItem('tempRouteIdStorage', id);
+    setIsLoading(true);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
 
   return (
     <Table
@@ -37,8 +42,8 @@ export default function App() {
       bottomContent={
         hasMore && !isLoading ? (
           <div className="flex w-full justify-center">
-            <Button isDisabled={list.isLoading} variant="flat" onPress={list.loadMore}>
-              {list.isLoading && <Spinner color="white" size="sm" />}
+            <Button isDisabled={isLoading} variant="flat" onPress={loadMore}>
+              {isLoading && <Spinner color="white" size="sm" />}
               Load More
             </Button>
           </div>
@@ -50,19 +55,25 @@ export default function App() {
       }}
     >
       <TableHeader>
-        <TableColumn key="name">Name</TableColumn>
-        <TableColumn key="height">Height</TableColumn>
-        <TableColumn key="mass">Mass</TableColumn>
-        <TableColumn key="birth_year">Birth year</TableColumn>
+        <TableColumn key="from">From</TableColumn>
+        <TableColumn key="to">To</TableColumn>
+        <TableColumn key="id">Directions</TableColumn>
       </TableHeader>
       <TableBody
         isLoading={isLoading}
-        items={list.items}
+        items={staticRoutes.map((route, index) => ({
+          ...route,
+          key: route.id || index,
+        }))}
         loadingContent={<Spinner label="Loading..." />}
       >
         {(item) => (
-          <TableRow key={item.name}>
-            {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
+          <TableRow key={item.key}>
+            <TableCell>{item.from}</TableCell>
+            <TableCell>{item.to}</TableCell>
+            <TableCell>
+              <Button onClick={() => saveKey(item.id)}>View</Button>
+            </TableCell>
           </TableRow>
         )}
       </TableBody>
