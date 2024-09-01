@@ -57,8 +57,11 @@ const Home = () => {
         <div className="w-full max-w-screen-xl bg-white p-4 rounded-lg shadow-md mb-8"> {/* Added mb-8 for bottom margin */}
           
           {/* Table Title */}
-          <h2 className="font-bold mb-4">Crew Details</h2>
-          
+          <div className="flex justify-between items-center mb-4">
+             <h2 className="font-bold ">Crew Details</h2> {/* Adjust text size if needed */}
+             <button className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">More Details</button>
+           </div>
+
           <div className="overflow-x-auto">
             <table className="min-w-full border-collapse border border-gray-300">
               {/* Table Head */}
@@ -206,9 +209,9 @@ const Home = () => {
               <thead>
                 <tr className="bg-gray-200">
                   
-                  <th className="p-3 border-b border-gray-300">Name</th>
-                  <th className="p-3 border-b border-gray-300">Position</th>
-                  <th className="p-3 border-b border-gray-300">Location</th>
+                  <th className="p-3 border-b border-gray-300">Bus No.</th>
+                  <th className="p-3 border-b border-gray-300">Current Route</th>
+                  <th className="p-3 border-b border-gray-300">Total Route</th>
                   <th className="p-3 border-b border-gray-300"></th>
                 </tr>
               </thead>
@@ -219,14 +222,7 @@ const Home = () => {
                 
                   <td className="p-3 border-b border-gray-300">
                     <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img
-                            src="https://img.daisyui.com/images/profile/demo/6@94.webp"
-                            alt="Avatar"
-                          />
-                        </div>
-                      </div>
+                      
                       <div>
                         <div className="font-bold">Emma Smith</div>
                         <div className="text-sm opacity-50">Canada</div>
@@ -244,14 +240,7 @@ const Home = () => {
                   
                   <td className="p-3 border-b border-gray-300">
                     <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img
-                            src="https://img.daisyui.com/images/profile/demo/7@94.webp"
-                            alt="Avatar"
-                          />
-                        </div>
-                      </div>
+                      
                       <div>
                         <div className="font-bold">Lucas Brown</div>
                         <div className="text-sm opacity-50">UK</div>
@@ -269,14 +258,7 @@ const Home = () => {
                   
                   <td className="p-3 border-b border-gray-300">
                     <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img
-                            src="https://img.daisyui.com/images/profile/demo/8@94.webp"
-                            alt="Avatar"
-                          />
-                        </div>
-                      </div>
+                      
                       <div>
                         <div className="font-bold">Olivia Johnson</div>
                         <div className="text-sm opacity-50">Germany</div>
@@ -294,14 +276,7 @@ const Home = () => {
                   
                   <td className="p-3 border-b border-gray-300">
                     <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img
-                            src="https://img.daisyui.com/images/profile/demo/9@94.webp"
-                            alt="Avatar"
-                          />
-                        </div>
-                      </div>
+                      
                       <div>
                         <div className="font-bold">Liam Wilson</div>
                         <div className="text-sm opacity-50">Australia</div>
