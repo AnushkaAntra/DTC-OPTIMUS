@@ -29,7 +29,7 @@ const Home = () => {
           </div>
         </div>
         
-        <div className='my-8 flex flex-wrap justify-center gap-6 text-black'>
+        <div className='py-8 flex flex-wrap justify-center gap-6 text-black'>
           <div className="bg-[#F29680] p-6 rounded-lg shadow-lg max-w-sm mx-auto h-max">
             <Link
               href="#"
