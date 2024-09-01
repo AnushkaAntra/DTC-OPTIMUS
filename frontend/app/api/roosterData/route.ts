@@ -13,7 +13,7 @@ export const GET = async (req: Request, res: Response) => {
     await connectToDatabase();
     const roosterData = await Rooster.create({data});
 
-    return new NextResponse(JSON.stringify("data saved successfully to database"), {
+    return new NextResponse(JSON.stringify(roosterData), {
       status: 201,
     });
   } catch (error) {
