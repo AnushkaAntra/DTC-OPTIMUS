@@ -30,8 +30,8 @@ export async function getConductorById(conductor_id: string) {
 export async function getConductorByAvailability() {
   try {
     await connectToDatabase();
-    const conductor = await Conductor.find({ availability: "available" });
-    return JSON.parse(JSON.stringify(conductor));
+    const conductors = await Conductor.find({ status: "available" });
+    return JSON.parse(JSON.stringify(conductors));
   } catch (error) {
     handleError(error);
   }

@@ -5,7 +5,7 @@ export default async function CrewDetails() {
   // Fetch available and not-available drivers data from the API
   const available = await getDriverByAvailability();
   const notAvailable = await getDriverByNotAvailability();
-
+  
   return (
     <div className='bg-primary min-h-screen py-8 px-4 text-black'>
       <h1 className='text-4xl font-bold text-center text-secondary mb-6'>Crew Details</h1>
