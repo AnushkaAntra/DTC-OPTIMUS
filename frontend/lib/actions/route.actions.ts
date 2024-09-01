@@ -1,3 +1,4 @@
+"use server";
 import Route from "@/database/models/route.model";
 import { connectToDatabase } from "@/database/mongoose";
 import { handleError } from "../utils";
@@ -8,7 +9,7 @@ export async function getRouteById(route_id: string) {
 
     const route = await Route.findOne({ route_id });
 
-    if(!route) {
+    if (!route) {
       throw new Error("Route not found");
     }
 
@@ -16,7 +17,6 @@ export async function getRouteById(route_id: string) {
   } catch (error) {
     handleError(error);
   }
-  
 }
 
 export async function getRoutes() {

@@ -1,12 +1,12 @@
 import mongoose, { model, models, mongo, Schema } from "mongoose";
 
 const CrewSchema = new Schema({
-  driver_name: {
-    type: String,
+  driver: {
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  conductor_name: {
-    type: String,
+  conductor: {
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
   route_id: {
@@ -19,6 +19,7 @@ const CrewSchema = new Schema({
   },
   status: {
     enum: ["available", "unavailable"],
+    default: "available",
     required: true,
   },
 }, {
