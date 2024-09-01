@@ -1,22 +1,19 @@
+import { getDriverById } from '@/lib/actions/driver.actions';
 import { notFound } from 'next/navigation';
 
 export default async function CrewDetails({ params }) {
-  const { crew } = params;
-
+  const { driver } = params;
+  console.log(driver);
   // Fetch data using the dynamic route parameter
-  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${crew}`, {
-    next: { revalidate: 60 },
-  });
+  const data = await getDriverById(driver);
 
-  if (!res.ok) {
+  if (!data) {
     // Handle fetch errors or non-existent crew
     notFound();
   }
 
-  const data = await res.json();
-
   return (
-    <div className="min-h-screen bg-primary py-8 px-4">
+    <div className="min-h-screen bg-primary py-8 px-4 text-black">
       <h1 className="text-3xl font-bold text-center text-secondary mb-6">Crew Details</h1>
       
       <div className="overflow-x-auto">
@@ -30,19 +27,19 @@ export default async function CrewDetails({ params }) {
           <tbody>
             <tr>
               <td className="py-3 px-4 border-b border-gray-200 font-medium">Name</td>
-              <td className="py-3 px-4 border-b border-gray-200">{data.name}</td>
+              <td className="py-3 px-4 border-b border-gray-200">{data.driver_name}</td> {/* Assuming data structure */}
             </tr>
             <tr>
-              <td className="py-3 px-4 border-b border-gray-200 font-medium">Email</td>
-              <td className="py-3 px-4 border-b border-gray-200">{data.email}</td>
+              <td className="py-3 px-4 border-b border-gray-200 font-medium">License Number</td>
+              <td className="py-3 px-4 border-b border-gray-200">{data.license_no}</td> {/* Assuming data structure */}
             </tr>
             <tr>
-              <td className="py-3 px-4 border-b border-gray-200 font-medium">Website</td>
-              <td className="py-3 px-4 border-b border-gray-200">{data.website}</td>
+              <td className="py-3 px-4 border-b border-gray-200 font-medium">Phone_no</td>
+              <td className="py-3 px-4 border-b border-gray-200">{data.ph_no}</td> {/* Assuming data structure */}
             </tr>
             <tr>
-              <td className="py-3 px-4 border-b border-gray-200 font-medium">City</td>
-              <td className="py-3 px-4 border-b border-gray-200">{data.address.city}</td>
+              <td className="py-3 px-4 border-b border-gray-200 font-medium">Address</td>
+              <td className="py-3 px-4 border-b border-gray-200">{data.address}</td> {/* Assuming data structure */}
             </tr>
           </tbody>
         </table>
