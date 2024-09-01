@@ -5,7 +5,7 @@ import Image from 'next/image';
 const Home = () => {
   return (
     <section>
-      <div className="flex flex-row">
+      <div className="border flex flex-row">
         <div>
           <h1>DTC-OPTIMUS</h1>
           <h3>An Automated Bus Scheduling and Route Management System</h3>
@@ -22,7 +22,7 @@ const Home = () => {
           </p>
         </div>
         <div>
-          <Image src="/assests/Logo.jpg" width={500} height={500} alt={""} />
+          <Image src="  /assests/Logo.jpg" width={500} height={500} alt={""} />
         </div>
       </div>
     </section>
