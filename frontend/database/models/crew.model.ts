@@ -1,4 +1,4 @@
-import mongoose, { model, models, mongo, Schema } from "mongoose";
+import mongoose, { model, models, Schema } from "mongoose";
 
 const CrewSchema = new Schema({
   driver: {
@@ -17,7 +17,8 @@ const CrewSchema = new Schema({
     type: String,
     required: true,
   },
-  status: {
+  status: { 
+    type: String,
     enum: ["available", "unavailable"],
     default: "available",
     required: true,

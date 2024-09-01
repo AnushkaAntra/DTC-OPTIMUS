@@ -30,13 +30,24 @@ export async function getDriverById(driver_id: string) {
 export async function getDriverByAvailability() {
   try {
     await connectToDatabase();
-    const driver = await Driver.find({ availability: "available" });
+    const driver = await Driver.find({ status: "available" });
     
     return JSON.parse(JSON.stringify(driver));
   } catch (error) {
     handleError(error);
   }
 }
+
+export async function getDriverByNotAvailability() {
+  try {
+    await connectToDatabase();
+    const notAvailableDrivers = await Driver.find({ status: { $ne: "available" } });
+    return JSON.parse(JSON.stringify(notAvailableDrivers));
+  } catch (error) {
+    handleError(error);
+  }
+}
+
 export async function createDriver(driverData: any) {
   try {
     await connectToDatabase();

@@ -1,6 +1,7 @@
 'use client'; // Mark the component as a Client Component
 
-import React, { useState } from 'react';
+import Link from "next/link";
+import { useState } from 'react';
 
 const Home = () => {
   // State to manage dropdown visibility
@@ -59,7 +60,12 @@ const Home = () => {
           {/* Table Title */}
           <div className="flex justify-between items-center mb-4">
              <h2 className="font-bold ">Crew Details</h2> {/* Adjust text size if needed */}
+             <Link
+              href="/crew-details"
+              prefetch={false}
+            >
              <button className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">More Details</button>
+            </Link>
            </div>
 
           <div className="overflow-x-auto">
