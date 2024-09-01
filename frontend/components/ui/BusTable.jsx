@@ -6,11 +6,17 @@ import stopNameMap from "@/sdk/map-resources/stop-name-map";
 import busRoutes from "@/sdk/map-resources/bus-routes";
 
 
+const { driver_name, ph_no, license_no } = {"_id":{"$oid":"66d3eb19d13e58852ff38dac"},"driver_name":"Zoe Wright","ph_no":{"$numberLong":"2955222357"},"address":"20 Test Address St","license_no":"0B8JZQ10VF","status":"available"};
+
 const staticRoutes = []
-for(var i = 0; i < busRoutes.length; i++) {
+for(var i = 5; i <= 25; i++) {
   // console([stopNameMap[busRoutes[i].first_stop_id].stop_name, stopNameMap[busRoutes[i].last_stop_id].stop_name])
   const from = stopNameMap[busRoutes[i].first_stop_id].stop_name;
   const to = stopNameMap[busRoutes[i].last_stop_id].stop_name;
+  
+
+
+
   if (to && from) {
     staticRoutes.push({"id": i, "from": from, "to": to});
   }
