@@ -1,6 +1,6 @@
 "use client";
-import dynamic from 'next/dynamic';
 import 'chart.js/auto';
+import dynamic from 'next/dynamic';
 
 const Bar = dynamic(() => import('react-chartjs-2').then((mod) => mod.Bar), {
   ssr: false,
@@ -10,7 +10,7 @@ const data = {
   labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   datasets: [
     {
-      label: 'GeeksforGeeks Bar Chart',
+      label: 'Route vs commuters',
       data: [12, 19, 3, 5, 2, 3],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
@@ -35,9 +35,9 @@ const data = {
 
 const ChartViews = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+    <div className="bg-white" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div style={{ width: '80%', maxWidth: '700px', height: '80%', maxHeight: '700px' }}>
-        <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Example 2: Bar Chart</h1>
+        <h1  className="text-black" style={{ textAlign: 'center', marginBottom: '20px' }}>Bar Chart for Routes vs Commuters</h1>
         <Bar data={data} />
       </div>
     </div>

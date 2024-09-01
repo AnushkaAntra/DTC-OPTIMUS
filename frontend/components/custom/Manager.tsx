@@ -12,7 +12,7 @@ const Home = () => {
   };
 
   return (
-    <main className="relative min-h-screen p-4 bg-gray-50">
+    <main className="relative min-h-screen p-4 bg-gray-50 text-black">
       {/* Dropdown Component */}
       <div className="absolute top-20 left-10 flex items-center">
         <div className="relative">

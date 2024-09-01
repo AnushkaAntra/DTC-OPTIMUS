@@ -16,7 +16,7 @@ export default async function CrewDetails({ params }) {
   const data = await res.json();
 
   return (
-    <div className="min-h-screen bg-primary py-8 px-4">
+    <div className="min-h-screen bg-primary py-8 px-4 text-black">
       <h1 className="text-3xl font-bold text-center text-secondary mb-6">Crew Details</h1>
       
       <div className="overflow-x-auto">
