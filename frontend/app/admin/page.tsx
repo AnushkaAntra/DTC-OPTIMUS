@@ -1,11 +1,11 @@
-// src/app/admin/page.tsx
-import Navbar from '@/components/custom/Navbar';
-import Home from '@/components/custom/Home';
-export default function AdminPage() {
+import React from 'react'
+
+type Props = {}
+
+const page = (props: Props) => {
   return (
-    <div>
-      <Home/>
-      <h1>This is a test message</h1>
-    </div>
-  );
+    <div>page</div>
+  )
 }
+
+export default page
