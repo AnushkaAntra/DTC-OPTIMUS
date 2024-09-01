@@ -5,7 +5,7 @@ import "@/components/styles/output.css"
 
 function Navbar() {
   return (
-    <nav className="sticky inset-x-0 top-0 z-50 bg-[#1a1a1a] shadow-sm">
+    <nav className="sticky inset-x-0 top-0 z-50 bg-[#1a1a1a] shadow-smt text-white">
       <div className="w-full max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-14 items-center">
           <Link href="#" className="flex items-center" prefetch={false}>
