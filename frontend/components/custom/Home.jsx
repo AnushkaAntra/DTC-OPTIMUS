@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
+import { faBus, faPeopleGroup, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from 'next/image';
-import busImage from '@/public/images/bus-pic.png'; // Adjust the path as necessary
+import Link from "next/link";
 
 const Home = () => {
   return (
@@ -10,17 +11,50 @@ const Home = () => {
         <div className="w-1/2">
           <Image src={busImage} alt="Bus" />
         </div>
-        <div className="w-1/2 pl-8">
-          <h1 className="text-4xl font-bold mb-4">DTC-OPTIMUS</h1>
-          <h3 className="text-2xl font-semibold mb-4">An Automated Bus Scheduling and Route Management System</h3>
-          <p className="text-lg leading-relaxed">
-            Our application is a comprehensive software solution designed to
-            automate various aspects of bus scheduling and route management for
-            the Delhi Transport Corporation (DTC). The system utilizes advanced
-            algorithms, data analytics, and Geographic Information System (GIS)
-            technologies to optimize operations, reduce errors, and enhance
-            efficiency.
-          </p>
+        
+        <div className='my-8 flex flex-wrap justify-center gap-6'>
+          <div className="bg-[#F29680] p-6 rounded-lg shadow-lg max-w-sm mx-auto h-max">
+            <Link
+              href="#"
+              prefetch={false}
+            >
+              <div className="flex flex-col justify-center items-center">
+                <FontAwesomeIcon
+                  icon={faBus}
+                  className='text-8xl mb-4'
+                />
+                <p className="mt-4 font-bold text-2xl">BUS</p>
+              </div>
+            </Link>
+          </div>
+          <div className="bg-[#F29680] p-6 rounded-lg shadow-lg max-w-sm mx-auto h-max">
+            <Link
+              href="/planner"
+              prefetch={false}
+            >
+              <div className="flex flex-col justify-center items-center">
+                <FontAwesomeIcon
+                  icon={faPeopleGroup}
+                  className='text-8xl mb-4'
+                />
+                <p className="mt-4 font-bold text-2xl">Planner</p>
+              </div>
+            </Link>
+          </div>
+          <div className="bg-[#F29680] p-6 rounded-lg shadow-lg max-w-sm mx-auto h-max">
+            <Link
+              href="/manager"
+              prefetch={false}
+            >
+              <div className="flex flex-col justify-center items-center">
+                <FontAwesomeIcon
+                  icon={faUser}
+                  className='text-8xl mb-4'
+                />
+                <p className="mt-4 font-bold text-2xl">Manager</p>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
