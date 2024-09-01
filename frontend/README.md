@@ -44,6 +44,16 @@ Efficient bus scheduling and route planning are essential for the smooth operati
 
 ## Screenshots
 
+<img src="./frontend/assests/Screenshot (760).png" alt="DTC-OPTIMUS Logo" width="150" height="150">
+<img src="./frontend/assests/Screenshot (761).png" alt="DTC-OPTIMUS Logo" width="150" height="150">
+<img src="./frontend/assests/Screenshot (762).png" alt="DTC-OPTIMUS Logo" width="150" height="150">
+<img src="./frontend/assests/Screenshot (763).png" alt="DTC-OPTIMUS Logo" width="150" height="150">
+<img src="./frontend/assests/Screenshot (764).png" alt="DTC-OPTIMUS Logo" width="150" height="150">
+<img src="./frontend/assests/Screenshot (765).png" alt="DTC-OPTIMUS Logo" width="150" height="150">
+<img src="./frontend/assests/Screenshot (766).png" alt="DTC-OPTIMUS Logo" width="150" height="150">
+<img src="./frontend/assests/Screenshot (767).png" alt="DTC-OPTIMUS Logo" width="150" height="150">
+<img src="./frontend/assests/Screenshot (768).png" alt="DTC-OPTIMUS Logo" width="150" height="150">
+
 ## Features
 
 - [x] **Linked Duty Scheduling:** Assign crews to specific buses for their entire shifts.
