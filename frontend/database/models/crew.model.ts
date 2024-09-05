@@ -5,14 +5,17 @@ const CrewSchema = new Schema(
     driver: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
+      ref: "Driver",
     },
     conductor: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
+      ref: "Conductor",
     },
     route_id: {
       type: [mongoose.Schema.Types.ObjectId],
       required: true,
+      ref: "Route",
     },
     rooster_id: {
       type: mongoose.Schema.Types.ObjectId,
@@ -22,7 +25,7 @@ const CrewSchema = new Schema(
       type: String,
       required: true,
     },
-    schedule:{
+    schedule: {
       type: [Number],
       required: true,
     },

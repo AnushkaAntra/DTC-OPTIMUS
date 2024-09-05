@@ -17,7 +17,7 @@ export async function getAllDrivers() {
 export async function getDriverById(driver_id: string) {
   try {
     await connectToDatabase();
-    const driver = await Driver.findOne({ driver_id });
+    const driver = await Driver.findOne({ _id: driver_id });
     if (!driver) {
       throw new Error("Driver not found");
     }

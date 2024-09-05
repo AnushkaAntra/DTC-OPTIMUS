@@ -17,7 +17,7 @@ export async function getAllConductors() {
 export async function getConductorById(conductor_id: string) {
   try {
     await connectToDatabase();
-    const conductor = await Conductor.findOne({ conductor_id });
+    const conductor = await Conductor.findOne({ _id: conductor_id });
     if (!conductor) {
       throw new Error("Conductor not found");
     }

@@ -25,7 +25,7 @@ const Home = () => {
             </p>
           </div>
           <div>
-            <Image src="/bus-pic.png" width={500} height={500} alt="Bus image" />
+            <Image src="/images/bus-pic.png" width={500} height={500} alt="Bus image" />
           </div>
         </div>
         
