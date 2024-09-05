@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/custom/navbar.tsx", "components/ui/admin-icons.hold", "components/ui/*", "components/custom/Home.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/custom/navbar.tsx", "components/ui/admin-icons.hold", "components/ui/*", "components/custom/Home.jsx", "app/api/transitData/route.js", "components/custom/ola-krutrim-live.tsx", "app/driver-details/[driver]/page.jsx"],
   "exclude": ["node_modules"]
 }
