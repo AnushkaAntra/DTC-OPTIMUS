@@ -3,21 +3,18 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "@/sdk/OlaMapsWebSDK/style.css";
 import { OlaMaps } from "@/sdk/OlaMapsWebSDK/olamaps-js-sdk.es";
 import { stops, stopCoordinates } from "@/sdk/map-resources/stops";
-
 import stopNameMap from "@/sdk/map-resources/stop-name-map";
+// import busRoutes from "@/sdk/map-resources/bus-routes";
 import formattedRoutes from "@/sdk/map-resources/formatted-route-stop";
 
 interface KrutrimMapProps {
-  showlive?: boolean;
-  showstops?: boolean;
-  showroutes?: boolean;
-  displayedStops?: string[];
-  displayedRoutes?: string[];
-  showRouteId?: number;
-  mapStyle?: String;
+  routeId?: boolean;
+  liveBus?: boolean;
+  stops?: number[];
+  busCoords?: any[];
 }
 
-export function KrutrimMap(props: KrutrimMapProps) {
+export function KrutrimMapLive(props: KrutrimMapProps) {
   const olaMaps = useMemo(
     () =>
       new OlaMaps({
@@ -26,15 +23,22 @@ export function KrutrimMap(props: KrutrimMapProps) {
     []
   );
 
+
   const mapRef = useRef(null);
   const [map, setMap] = useState(null);
+
+
+  const localData: string | null = localStorage.getItem("currentRouteId");
+  const { index, vehicleData }: { index: number, vehicleData: any } = localData ? JSON.parse(localData) : { index: 0, vehicleData: null };
+  // console.log(vehicleData[0]);
+
 
   // Create the map layout
   useEffect(() => {
     const mapContainer = mapRef.current;
-
     const initializedMap = olaMaps.init({
-      style: props.mapStyle || "https://api.olamaps.io/tiles/vector/v1/styles/default-light-standard/style.json",
+      style:
+        "https://api.olamaps.io/tiles/vector/v1/styles/default-dark-lite/style.json",
       container: mapContainer,
       center: [77.2190938, 28.6331322],
       zoom: 9.7,
@@ -43,59 +47,34 @@ export function KrutrimMap(props: KrutrimMapProps) {
     olaMaps.addNavigationControls;
 
     setMap(initializedMap);
-  }, [props.mapStyle, olaMaps]);
+  }, []);
 
-  // Display a single route
-  useEffect(() => {
-    if(!map) {
-      return;
-    }
-    if (props.showRouteId !== undefined) {
-      showRoutes(olaMaps, map, props.showRouteId);
-    }
-  }, [props.showRouteId])
+  //   // Display Bus Stops
+  //   useEffect(() => {
+  //     if (!map) return;
 
-
-  // Display Bus Stops
-  useEffect(() => {
-    if (!map) return;
-
-    if (props.showstops) {
-      const markerCoordinates = stops.map((stop) => [
-        stop.stop_lon,
-        stop.stop_lat,
-      ]);
-      console.log(markerCoordinates.length);
-      for (let index = 0; index <= 100; index++) {
-        olaMaps
-          .addMarker({ offset: [0, 6], anchor: "bottom" })
-          .setLngLat(markerCoordinates[index])
-          .addTo(map);
-      }
-    }
-  }, [props.showlive, props.showstops, map, olaMaps]);
-
-  // Display Live Transit Feed
-  useEffect(() => {
-    if (!map) return;
-
-    if (props.showlive) {
-      // showLiveTransit(map, olaMaps);
-    }
-  }, [props.showlive, map, olaMaps]);
+  //   }, [map, olaMaps]);
 
   // Display Bus routes
   useEffect(() => {
     if (!map) return;
 
-    if (props.showroutes) {
-      const routeId = localStorage.getItem("tempRouteIdStorage");
-      if (routeId !== null) {
-        showRoutes(olaMaps, map, Number(routeId));
-      }
-    }
-  }, [map, props.showroutes, olaMaps]);
+    if (props.routeId) {
+      showRoutes(olaMaps, map, Number(vehicleData?.[0] || []));
 
+    }
+  }, [map, props.routeId, olaMaps]);
+
+
+  // Display Live routes:
+
+  useEffect(() => {
+    if (!map) return;
+
+    if(props.liveBus) {
+      showLiveBuses(olaMaps, map, vehicleData[1]);
+    }
+  })
   return (
     <>
       <div ref={mapRef} id="map" className="h-full w-full"></div>
@@ -103,37 +82,33 @@ export function KrutrimMap(props: KrutrimMapProps) {
   );
 }
 
-// function showLiveTransit(map: any, olaMaps: any) {
-//   // const socket = io("http://localhost:8080/data.json");
+async function showLiveBuses(olaMaps: any, map: any, tripData: any) {
+  // For every bus, fetch it's coordinates
+  console.log("Trip data",tripData)
 
-//   socket.on("connect", () => {
-//     console.log("Socket connected");
-//     // Perform any necessary actions after the socket connection is established
-//   });
+  tripData.map((dataPoint: any) => {
+      const {latitude, longitude} = dataPoint.position;
+      const {label} = dataPoint.vehicle;
+      const {startTime} = dataPoint.trip;
+      console.log(latitude, longitude, label, startTime);
 
-//   socket.on("disconnect", () => {
-//     console.log("Socket disconnected");
-//     // Perform any necessary actions after the socket connection is disconnected
-//   });
-
-//   // Add your socket event listeners and handlers here
-//   // For example:
-//   socket.on("liveTransitData", (data: any) => {
-//     console.log("Received live transit data:", data);
-//     // Process the received data and update the map accordingly
-//   });
-
-//   // Rest of the code...
-//   olaMaps
-//     .addMarker({ offset: [0, 6], anchor: "bottom" })
-//     .setLngLat(["77.2190938", "28.6331322"])
-//     .addTo(map);
-// }
-
-// Routes done, need to pass in some routeIds to display the data, gotta implement this
+      const popup = olaMaps
+      .addPopup({ offset: [0, -30], anchor: "bottom" })
+      .setHTML(`<div>${label}</div>`);
+    
+      olaMaps
+      .addMarker({ offset: [0, 6], anchor: "bottom", color: "red" })
+      .setLngLat([longitude, latitude])
+      .setPopup(popup)
+      .addTo(map);
 
 
-async function showRoutes(olaMaps: any, map: any, routeIds: number) {
+  });
+  // const data = tripData
+
+}
+
+async function showRoutes(olaMaps: any, map: any, routeIds: any) {
   // For every bus route, fetch the stops and extract coordinates out of it,
   const stopIds = formattedRoutes[routeIds].stops;
   // For each stopId, we need the Longitude and latitude
@@ -158,8 +133,6 @@ async function showRoutes(olaMaps: any, map: any, routeIds: number) {
     coordinates.map((coord) => coord.slice(1))
   );
 
-
-
   const snappedCoordinates = data.snapped_points.map(
     (point: { location: { lat: any; lng: any } }) => [
       point.location.lng,
@@ -167,8 +140,6 @@ async function showRoutes(olaMaps: any, map: any, routeIds: number) {
     ]
   );
 
-
-  
   // console.log("Snapped coordinates", snappedCoordinates);
 
   // If it highlights as an error, ignore it, it works. Error highlighting is due to using hooks to render the map
@@ -218,19 +189,24 @@ async function getSnappedCoordinates(coordinates: any[][]) {
   return data;
 }
 
-async function showRouteStops(olaMaps: any, map: any, markerCoordinates: any[][]) {
+async function showRouteStops(
+  olaMaps: any,
+  map: any,
+  markerCoordinates: any[][]
+) {
+  const tempCoordinates = markerCoordinates.map((coord) => coord.slice(1));
 
-  const tempCoordinates = markerCoordinates.map((coord) => coord.slice(1))
-  
   tempCoordinates.forEach((coordinates, index) => {
-    const popup = olaMaps.addPopup({ offset: [0, -30], anchor: 'bottom' }).setHTML(`<div>${markerCoordinates[index][0]}</div>`)
-        olaMaps.addMarker({ offset: [0, 6], anchor: 'bottom' })
-        .setLngLat(coordinates)
-        .setPopup(popup)
-        .addTo(map);
-      });
-
-
+    const popup = olaMaps
+      .addPopup({ offset: [0, -30], anchor: "bottom" })
+      .setHTML(`<div>${markerCoordinates[index][0]}</div>`);
+    olaMaps
+      .addMarker({ offset: [0, 6], anchor: "bottom" })
+      .setOpacity(0.6)
+      .setLngLat(coordinates)
+      .setPopup(popup)
+      .addTo(map);
+  });
 }
 
-export default KrutrimMap;
+export default KrutrimMapLive;

@@ -19,6 +19,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.31",
     "frontend": "file:",
+    "gtfs-realtime-bindings": "^1.1.1",
     "lucide-react": "^0.437.0",
     "mini-svg-data-uri": "^1.4.4",
     "mongodb": "^6.8.0",
