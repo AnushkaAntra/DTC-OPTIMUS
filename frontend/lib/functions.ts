@@ -26,3 +26,23 @@ export function crewBinding(
 
   return crew;
 }
+
+export function countBuses(schedule: any) {
+  // assuming at each 30 min i need a new bus
+  let buses = 0;
+  for (let i = 0; i < schedule.length; i++) {
+    for (let ele of schedule[i]) {
+      if (ele === 1) {
+        buses++;
+      }
+    }
+  }
+  return buses;
+}
+
+export function mapBuses(routes: any, buses: any) {
+  // assume 30 routes
+  /*
+    route 1 - 5:00 - 5:30, 
+  */
+}

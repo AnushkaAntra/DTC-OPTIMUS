@@ -8,6 +8,7 @@ import { getDriverByAvailability } from "./driver.actions";
 import { getConductorByAvailability } from "./conductor.actions";
 import { getRoostersForToday } from "./rooster.actions";
 import { getRoutes } from "./route.actions";
+import { crewMockData } from "../mock.data";
 
 export async function getAllCrews() {
   try {
@@ -38,6 +39,32 @@ export async function getCrewById(crew_id: string) {
   }
 }
 
+export async function getCrewByAvailability() {
+  try {
+    await connectToDatabase();
+    const crews = await Crew.find({ status: "available" })
+      .populate("conductor")
+      .populate("driver")
+      .populate("route_id");
+    return JSON.parse(JSON.stringify(crews));
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+export async function getCrewByNotAvailability() {
+  try {
+    await connectToDatabase();
+    const crews = await Crew.find({ status: { $ne: "available" } })
+      .populate("conductor")
+      .populate("driver")
+      .populate("route_id");
+    return JSON.parse(JSON.stringify(crews));
+  } catch (error) {
+    handleError(error);
+  }
+}
+
 export async function createCrew(crewData: any) {
   try {
     await connectToDatabase();
@@ -46,6 +73,17 @@ export async function createCrew(crewData: any) {
     await crew.save();
 
     return JSON.parse(JSON.stringify(crew));
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+export async function createManyCrew() {
+  try {
+    await connectToDatabase();
+    const addedCrew = Crew.insertMany(crewMockData);
+
+    return JSON.parse(JSON.stringify(addedCrew));
   } catch (error) {
     handleError(error);
   }
@@ -77,7 +115,7 @@ export async function assignCrew() {
     routes.push(route._id);
   }
 
-  console.log(routes)
+  console.log(routes);
   const crew = crewBinding(drivers, conductors, rooster, routes);
   try {
     await connectToDatabase();
