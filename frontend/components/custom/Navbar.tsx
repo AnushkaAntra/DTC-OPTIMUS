@@ -32,11 +32,11 @@ function Navbar() {
               Crew
             </Link>
             <Link
-              href="#"
+              href="/"
               className="font-medium flex items-center text-sm transition-colors hover:underline"
               prefetch={false}
             >
-              Contact
+              Home
             </Link>
           </nav>
         </div>

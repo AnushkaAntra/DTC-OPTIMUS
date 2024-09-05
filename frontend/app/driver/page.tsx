@@ -1,4 +1,5 @@
 import {KrutrimMap} from '@/components/custom/ola-krutrim'
+import BusTable from '@/components/ui/BusTable'
 import ButtonModal from '@/components/ui/ButtonModal'
 import RouteTable from '@/components/ui/RouteTable'
 import React from 'react'
@@ -13,7 +14,7 @@ const page = (props: Props) => {
         </div>
         <section className="px-4 py-6">
           <ButtonModal text={"Buses"}/>
-          <RouteTable />
+          <BusTable />
 
         </section>
     
