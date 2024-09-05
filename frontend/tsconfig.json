@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/custom/navbar.tsx", "components/ui/admin-icons.hold", "components/ui/*", "components/custom/Home.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/custom/navbar.tsx", "components/ui/admin-icons.hold", "components/ui/*", "components/custom/Home.jsx", "app/crew-details/[crew]/page.jsx", "app/crew-details/page.jsx"],
   "exclude": ["node_modules"]
 }

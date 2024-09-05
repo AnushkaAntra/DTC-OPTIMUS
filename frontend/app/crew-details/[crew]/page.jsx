@@ -1,14 +1,13 @@
-import { getDriverById } from '@/lib/actions/driver.actions';
-import { notFound } from 'next/navigation';
+import { notFound } from "next/navigation";
+import { crewMockData } from '../../../lib/mock.data';
 
 export default async function CrewDetails({ params }) {
-  const { driver } = params;
-  console.log(driver);
+  const { crew } = params;
+
   // Fetch data using the dynamic route parameter
-  const data = await getDriverById(driver);
+  const data = crewMockData.find(c => c.driver === crew);
 
   if (!data) {
-    // Handle fetch errors or non-existent crew
     notFound();
   }
 
@@ -26,27 +25,37 @@ export default async function CrewDetails({ params }) {
           </thead>
           <tbody>
             <tr>
-              <td className="py-3 px-4 border-b border-gray-200 font-medium">Name</td>
-              <td className="py-3 px-4 border-b border-gray-200">{data.driver_name}</td> 
+              <td className="py-3 px-4 border-b border-gray-200 font-medium">Driver Id</td>
+              <td className="py-3 px-4 border-b border-gray-200">{data.driver}</td> 
             </tr>
             <tr>
-              <td className="py-3 px-4 border-b border-gray-200 font-medium">License Number</td>
-              <td className="py-3 px-4 border-b border-gray-200">{data.license_no}</td> 
+              <td className="py-3 px-4 border-b border-gray-200 font-medium">Conductor Id</td>
+              <td className="py-3 px-4 border-b border-gray-200">{data.conductor}</td> 
             </tr>
             <tr>
-              <td className="py-3 px-4 border-b border-gray-200 font-medium">Phone_no</td>
-              <td className="py-3 px-4 border-b border-gray-200">{data.ph_no}</td> 
+              <td className="py-3 px-4 border-b border-gray-200 font-medium">Route Id</td>
+              <td className="py-3 px-4 border-b border-gray-200">{data.route_id.join(", ")}</td> 
             </tr>
             <tr>
-              <td className="py-3 px-4 border-b border-gray-200 font-medium">Address</td>
-              <td className="py-3 px-4 border-b border-gray-200">{data.address}</td> 
+              <td className="py-3 px-4 border-b border-gray-200 font-medium">Rooster Id</td>
+              <td className="py-3 px-4 border-b border-gray-200">{data.rooster_id}</td> 
             </tr>
             <tr>
-              <td className="py-3 px-4 border-b border-gray-200 font-medium">status</td>
-              <td className="py-3 px-4 border-b border-gray-200">{data.status = "available" ? 
-                <div className='bg-green-500 text-green-500 w-5 h-5 rounded-full'></div> 
-                : <div className='bg-red-500 text-red-500 w-5 h-5 rounded-full'></div>  
-                 }
+              <td className="py-3 px-4 border-b border-gray-200 font-medium">Rooster Bus Id</td>
+              <td className="py-3 px-4 border-b border-gray-200">{data.rooster_bus_id}</td> 
+            </tr>
+            <tr>
+              <td className="py-3 px-4 border-b border-gray-200 font-medium">Schedule</td>
+              <td className="py-3 px-4 border-b border-gray-200">
+                {data.schedule.map((status, index) => (
+                  <span key={index} className={`block w-4 h-4 rounded-full ${status ? 'bg-green-500' : 'bg-red-500'} inline-block`} />
+                ))}
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 px-4 border-b border-gray-200 font-medium">Status</td>
+              <td className="py-3 px-4 border-b border-gray-200">
+                <div className={`w-5 h-5 rounded-full ${data.status === "available" ? 'bg-green-500' : 'bg-red-500'}`} />
               </td> 
             </tr>
           </tbody>
