@@ -72,7 +72,7 @@ export function KrutrimMapLive(props: KrutrimMapProps) {
     if (!map) return;
 
     if(props.liveBus) {
-      showLiveBuses(olaMaps, map, vehicleData[1]);
+      showLiveBuses(olaMaps, map, vehicleData?.[1]);
     }
   })
   return (
@@ -86,7 +86,7 @@ async function showLiveBuses(olaMaps: any, map: any, tripData: any) {
   // For every bus, fetch it's coordinates
   console.log("Trip data",tripData)
 
-  tripData.map((dataPoint: any) => {
+  tripData?.map((dataPoint: any) => {
       const {latitude, longitude} = dataPoint.position;
       const {label} = dataPoint.vehicle;
       const {startTime} = dataPoint.trip;

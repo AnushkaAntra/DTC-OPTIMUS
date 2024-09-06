@@ -135,10 +135,9 @@ export function KrutrimMap(props: KrutrimMapProps) {
 
 async function showRoutes(olaMaps: any, map: any, routeIds: number) {
   // For every bus route, fetch the stops and extract coordinates out of it,
-  const stopIds = formattedRoutes[routeIds].stops;
+  const stopIds = formattedRoutes[routeIds]?.stops;
   // For each stopId, we need the Longitude and latitude
-  const coordinates = stopIds
-    .map((stopId) => {
+  const coordinates = stopIds?.map((stopId) => {
       const stop = stopCoordinates[stopId];
       if (stop) {
         return [stopNameMap[stopId].stop_name, stop.stop_lon, stop.stop_lat];
@@ -155,12 +154,12 @@ async function showRoutes(olaMaps: any, map: any, routeIds: number) {
   showRouteStops(olaMaps, map, coordinates);
 
   const data = await getSnappedCoordinates(
-    coordinates.map((coord) => coord.slice(1))
+    coordinates?.map((coord) => coord.slice(1))
   );
 
 
 
-  const snappedCoordinates = data.snapped_points.map(
+  const snappedCoordinates = data.snapped_points?.map(
     (point: { location: { lat: any; lng: any } }) => [
       point.location.lng,
       point.location.lat,
@@ -203,10 +202,8 @@ async function showRoutes(olaMaps: any, map: any, routeIds: number) {
 }
 
 async function getSnappedCoordinates(coordinates: any[][]) {
-  const reversedCoordinates = coordinates.map((coord) => coord.reverse());
-  const points = reversedCoordinates
-    .map((coord: any[]) => coord.join(","))
-    .join("%7C");
+  const reversedCoordinates = coordinates?.map((coord) => coord.reverse());
+  const points = reversedCoordinates?.map((coord: any[]) => coord.join(",")).join("%7C");
   const url = `https://api.olamaps.io/routing/v1/snapToRoad?points=${points}&enhancePath=true&api_key=DYmTmhf7Q2g2PHpFpgm3sWR7HqQtaABzIVHzg96e`;
   const response = await fetch(url, {
     headers: {
@@ -220,9 +217,9 @@ async function getSnappedCoordinates(coordinates: any[][]) {
 
 async function showRouteStops(olaMaps: any, map: any, markerCoordinates: any[][]) {
 
-  const tempCoordinates = markerCoordinates.map((coord) => coord.slice(1))
+  const tempCoordinates = markerCoordinates?.map((coord) => coord.slice(1))
   
-  tempCoordinates.forEach((coordinates, index) => {
+  tempCoordinates?.forEach((coordinates, index) => {
     const popup = olaMaps.addPopup({ offset: [0, -30], anchor: 'bottom' }).setHTML(`<div>${markerCoordinates[index][0]}</div>`)
         olaMaps.addMarker({ offset: [0, 6], anchor: 'bottom' })
         .setLngLat(coordinates)
