@@ -7,7 +7,7 @@ import busRoutes from "@/sdk/map-resources/bus-routes";
 
 
 const staticRoutes = []
-for(var i = 0; i < busRoutes.length; i++) {
+for(var i = 0; i < 20; i++) {
   // console([stopNameMap[busRoutes[i].first_stop_id].stop_name, stopNameMap[busRoutes[i].last_stop_id].stop_name])
   const from = stopNameMap[busRoutes[i].first_stop_id].stop_name;
   const to = stopNameMap[busRoutes[i].last_stop_id].stop_name;
@@ -30,11 +30,9 @@ export default function App() {
   const [isSaving, setIsSaving] = React.useState(false);
 
   const saveKey = (id) => {
-    setIsSaving(true);
+    // setIsSaving(true);
     localStorage.setItem('tempRouteIdStorage', id);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    window.location.reload();
   };
 
   return (
@@ -74,12 +72,15 @@ export default function App() {
             <TableCell>{item.from}</TableCell>
             <TableCell>{item.to}</TableCell>
             <TableCell>
-              <Button onClick={() => saveKey(item.id)} isDisabled={isSaving}>
-                {item.id === isSaving ? (
+              <Button onClick={() => {
+                localStorage.setItem('tempRouteIdStorage', item.id);
+                window.location.reload();
+              }}>
+                View
+                {/* {item.id === isSaving ? (
                   <Spinner color="white" size="sm" />
                 ) : (
-                  "View"
-                )}
+                )} */}
               </Button>
             </TableCell>
           </TableRow>

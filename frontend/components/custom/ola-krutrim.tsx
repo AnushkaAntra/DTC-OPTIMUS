@@ -50,7 +50,8 @@ export function KrutrimMap(props: KrutrimMapProps) {
     if(!map) {
       return;
     }
-    if (props.showRouteId !== undefined) {
+
+    if (props.showRouteId && props.showRouteId !== undefined) {
       showRoutes(olaMaps, map, props.showRouteId);
     }
   }, [props.showRouteId])

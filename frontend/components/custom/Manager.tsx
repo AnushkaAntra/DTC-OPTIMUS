@@ -127,38 +127,7 @@ const Home = () => {
         </div>
 
         {/* New Table */}
-        <div className="w-full max-w-screen-xl bg-white p-4 rounded-lg shadow-md">
-          
-          {/* Table Title */}
-          <h2 className="font-bold mb-4">Additional Details</h2>
-          
-          <div className="overflow-x-auto">
-            <table className="min-w-full border-collapse border border-gray-300">
-              {/* Table Head */}
-              <thead>
-                <tr className="bg-gray-200">
-                  <th className="p-3 border-b border-gray-300">Bus No.</th>
-                  <th className="p-3 border-b border-gray-300">Current Route</th>
-                  <th className="p-3 border-b border-gray-300">Total Route</th>
-                  <th className="p-3 border-b border-gray-300"></th>
-                </tr>
-              </thead>
-              {/* Table Body */}
-              <tbody>
-                {/* Rows can be dynamically generated similarly if needed */}
-                <tr className="hover:bg-gray-50">
-                  <td className="p-3 border-b border-gray-300">123</td>
-                  <td className="p-3 border-b border-gray-300">Route A</td>
-                  <td className="p-3 border-b border-gray-300">10</td>
-                  <td className="p-3 border-b border-gray-300">
-                    <button className="btn btn-ghost btn-s">details</button>
-                  </td>
-                </tr>
-                {/* Add more rows as needed */}
-              </tbody>
-            </table>
-          </div>
-        </div>
+       
       </div>
     </main>
   );
