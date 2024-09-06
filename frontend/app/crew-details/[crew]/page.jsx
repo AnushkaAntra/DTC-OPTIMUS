@@ -7,7 +7,7 @@ import { getDriverById } from "@/lib/actions/driver.actions";
 import { getConductorById } from "@/lib/actions/conductor.actions";
 
 export default function CrewDetails({ params }) {
-  const { crew } = params;
+  const { crew_id } = params;
 
   // Fetch data using the dynamic route parameter
   const [crewData, setCrewData] = useState(null);
@@ -16,9 +16,9 @@ export default function CrewDetails({ params }) {
 
   useEffect(() => {
     const fetchCrewData = async () => {
-      const data = await getCrewById(crew);
+      const data = await getCrewById(crew_id);
       setCrewData(data);
-      console.log("Crew data", data);
+      console.log(data);
       const driver = await getDriverById(data?.driver);
       setDriver(driver);
       const conductor = await getConductorById(data?.conductor);
